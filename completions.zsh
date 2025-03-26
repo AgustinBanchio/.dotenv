@@ -1,5 +1,5 @@
 autoload -U compinit; compinit
-fpath=(~/Documents/dev/repos/zsh-completions/src $fpath)
+fpath=(~/repos/zsh-completions/src $fpath)
 
 zstyle ':completion:*' completer _extensions _complete _approximate
 

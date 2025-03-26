@@ -1,11 +1,15 @@
 [user]
-  name = Dimitris
-  email = safinn@users.noreply.github.com
+	email = AgustinBanchio@users.noreply.github.com
+	name = Agustin Banchio
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEMZ7XY8eTReuuuLJm+zkvOFEhqSm1H+GuxGiRwyLwpl
 [init]
   defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
 [core]
-  editor = nvim
-[alias]
-  st = status
-  co = checkout
-  pushf = push -f
+	autocrlf = input
+	editor = nvim

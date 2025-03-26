@@ -23,12 +23,6 @@ source ~/completions.zsh
 alias v="nvim"
 # Docker tools
 alias dive='docker run -ti --rm -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive'
-# Modern replacements
-alias ls='eza'
-alias cat='bat'
-# Git shortcuts
-alias gpsup='git push --set-upstream origin $(git_current_branch)'
-alias gloga='git log --oneline --decorate --graph --all'
 
 # -----------------------------------------------------------------------------
 # Git Functions
@@ -102,21 +96,4 @@ function gbds() {
 # Delete all fully merged branches (excluding main/develop)
 function gbda() {
   git branch --no-color --merged | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete 2>/dev/null
-}
-
-# -----------------------------------------------------------------------------
-# Development Tool Overrides
-# -----------------------------------------------------------------------------
-# Enhanced Go test function with gotestsum if available
-function go() {
-  if [[ $1 == "test" ]]; then
-    shift
-    if command -v gotestsum >/dev/null 2>&1; then
-      command gotestsum --format-hide-empty-pkg -f dots -- "$@"
-    else
-      command go test "$@"
-    fi
-  else
-    command go "$@"
-  fi
 }

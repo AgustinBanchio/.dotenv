@@ -33,12 +33,12 @@ fi
 # Create development directories
 # -----------------------------------------------------------------------------
 echo "Setting up development directories..."
-mkdir -p ~/Documents/dev/repos
+mkdir -p ~/repos
 
 # Clone ZSH completions
-if [ ! -d ~/Documents/dev/repos/zsh-completions ]; then
+if [ ! -d ~/repos/zsh-completions ]; then
   echo "Cloning zsh-completions..."
-  git clone https://github.com/zsh-users/zsh-completions ~/Documents/dev/repos/zsh-completions
+  git clone https://github.com/zsh-users/zsh-completions ~/repos/zsh-completions
 fi
 
 # -----------------------------------------------------------------------------
@@ -48,14 +48,14 @@ echo "Setting up dotfiles..."
 cd ~
 if [ ! -d ~/.dotfiles ]; then
   # Try SSH first, fall back to HTTPS if it fails
-  if ! git clone git@github.com:safinn/.dotfiles.git 2>/dev/null; then
+  if ! git clone git@github.com:agustinbanchio/macconfig.git 2>/dev/null; then
     echo "SSH clone failed, trying HTTPS instead..."
-    git clone https://github.com/safinn/.dotfiles.git
+    git clone https://github.com/agustinbanchio/macconfig.git
   fi
 fi
 
-if [ -d ~/.dotfiles ]; then
-  cd ~/.dotfiles
+if [ -d ~/macconfig]; then
+  cd ~/macconfig
   if command -v stow >/dev/null 2>&1; then
     echo "Linking dotfiles with stow..."
     stow .
@@ -102,10 +102,6 @@ fi
 # -----------------------------------------------------------------------------
 echo "Setting macOS preferences..."
 
-# Keyboard settings
-defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-
 # Mouse and trackpad
 defaults write -g com.apple.swipescrolldirection -bool false
 
@@ -118,7 +114,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Menu bar
 defaults write com.apple.menuextra.clock IsAnalog -bool false
-defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm:ss"
 
 # Finder settings
 defaults write com.apple.finder ShowStatusBar -bool true
