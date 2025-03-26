@@ -46,7 +46,7 @@ fi
 # -----------------------------------------------------------------------------
 echo "Setting up dotfiles..."
 cd ~
-if [ ! -d ~/.dotfiles ]; then
+if [ ! -d ~/macconfig ]; then
   # Try SSH first, fall back to HTTPS if it fails
   if ! git clone git@github.com:agustinbanchio/macconfig.git 2>/dev/null; then
     echo "SSH clone failed, trying HTTPS instead..."
@@ -73,11 +73,11 @@ fi
 # Install Homebrew packages from Brewfile
 # -----------------------------------------------------------------------------
 echo "Installing packages from Brewfile..."
-if [ -f ./Brewfile ]; then
+if [ -f ~/macconfig/Brewfile ]; then
   brew analytics off
-  brew bundle --file=./Brewfile
+  brew bundle --file=~/macconfig/Brewfile
 else
-  echo "⚠️  Brewfile not found in current directory."
+  echo "⚠️  Brewfile not found in macconfig directory."
 fi
 
 # -----------------------------------------------------------------------------
@@ -161,12 +161,6 @@ killall Dock Finder SystemUIServer 2>/dev/null || true
 # Start SSH agent
 echo "Starting SSH agent..."
 eval "$(ssh-agent -s)" 2>/dev/null
-
-# Source .zshrc if it exists
-if [ -f "$HOME/.zshrc" ]; then
-  echo "Loading shell configuration..."
-  source "$HOME/.zshrc" 2>/dev/null || true
-fi
 
 # Rebuild ZSH completion index
 echo "Updating ZSH completions..."
