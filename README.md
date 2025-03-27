@@ -8,3 +8,4 @@
     1. Turn on the 1Password SSH agent
     2. Configure Commit Signing in 1Password 
 8. Login to Goland and Webstorm for Sync
+9. Disable screen dimming
