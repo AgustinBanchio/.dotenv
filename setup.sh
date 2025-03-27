@@ -46,16 +46,16 @@ fi
 # -----------------------------------------------------------------------------
 echo "Setting up dotfiles..."
 cd ~
-if [ ! -d ~/macconfig ]; then
+if [ ! -d ~/.dotenv ]; then
   # Try SSH first, fall back to HTTPS if it fails
-  if ! git clone git@github.com:agustinbanchio/macconfig.git 2>/dev/null; then
+  if ! git clone git@github.com:agustinbanchio/.dotenv.git 2>/dev/null; then
     echo "SSH clone failed, trying HTTPS instead..."
-    git clone https://github.com/agustinbanchio/macconfig.git
+    git clone https://github.com/agustinbanchio/.dotenv.git
   fi
 fi
 
-if [ -d ~/macconfig]; then
-  cd ~/macconfig
+if [ -d ~/.dotenv]; then
+  cd ~/.dotenv
   if command -v stow >/dev/null 2>&1; then
     echo "Linking dotfiles with stow..."
     stow .
@@ -73,11 +73,11 @@ fi
 # Install Homebrew packages from Brewfile
 # -----------------------------------------------------------------------------
 echo "Installing packages from Brewfile..."
-if [ -f ~/macconfig/Brewfile ]; then
+if [ -f ~/.dotenv/Brewfile ]; then
   brew analytics off
-  brew bundle --file=~/macconfig/Brewfile
+  brew bundle --file=~/.dotenv/Brewfile
 else
-  echo "⚠️  Brewfile not found in macconfig directory."
+  echo "⚠️  Brewfile not found in .dotenv directory."
 fi
 
 # -----------------------------------------------------------------------------

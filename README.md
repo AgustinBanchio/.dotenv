@@ -1,4 +1,4 @@
-1. Run `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/agustinbanchio/macconfig/refs/heads/main/setup.sh)"`
+1. Run `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/agustinbanchio/.dotenv/refs/heads/main/setup.sh)"`
 2. Set dark mode
 3. "Show recent applications in Dock" -> off
 4. "Show indicators for open applications" -> on
