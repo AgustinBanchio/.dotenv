@@ -54,7 +54,7 @@ if [ ! -d ~/.dotfiles ]; then
   fi
 fi
 
-if [ -d ~/.dotfiles]; then
+if [ -d ~/.dotfiles ]; then
   cd ~/.dotfiles
   if command -v stow >/dev/null 2>&1; then
     echo "Linking dotfiles with stow..."
