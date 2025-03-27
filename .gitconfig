@@ -1,6 +1,6 @@
 [user]
+    name = Agustin Banchio
 	email = AgustinBanchio@users.noreply.github.com
-	name = Agustin Banchio
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEMZ7XY8eTReuuuLJm+zkvOFEhqSm1H+GuxGiRwyLwpl
 [init]
   defaultBranch = main
@@ -13,3 +13,5 @@
 [core]
 	autocrlf = input
 	editor = nvim
+[includeIf "gitdir:riskledger/"]
+    path = .gitconfig-work
