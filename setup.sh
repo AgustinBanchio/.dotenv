@@ -17,17 +17,17 @@ echo "===== Starting Mac Setup ====="
 if ! command -v brew >/dev/null 2>&1; then
   echo "Installing Homebrew..."
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "Homebrew already installed. Updating..."
+  brew update
+fi
 
-  # Add Homebrew to PATH for this session
+# Add Homebrew to PATH for this session
   if [[ $(uname -m) == "arm64" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   else
     eval "$(/usr/local/bin/brew shellenv)"
   fi
-else
-  echo "Homebrew already installed. Updating..."
-  brew update
-fi
 
 # -----------------------------------------------------------------------------
 # Create development directories
