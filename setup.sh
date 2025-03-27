@@ -46,16 +46,16 @@ fi
 # -----------------------------------------------------------------------------
 echo "Setting up dotfiles..."
 cd ~
-if [ ! -d ~/.dotenv ]; then
+if [ ! -d ~/.dotfiles ]; then
   # Try SSH first, fall back to HTTPS if it fails
-  if ! git clone git@github.com:agustinbanchio/.dotenv.git 2>/dev/null; then
+  if ! git clone git@github.com:agustinbanchio/.dotfiles.git 2>/dev/null; then
     echo "SSH clone failed, trying HTTPS instead..."
-    git clone https://github.com/agustinbanchio/.dotenv.git
+    git clone https://github.com/agustinbanchio/.dotfiles.git
   fi
 fi
 
-if [ -d ~/.dotenv]; then
-  cd ~/.dotenv
+if [ -d ~/.dotfiles]; then
+  cd ~/.dotfiles
   if command -v stow >/dev/null 2>&1; then
     echo "Linking dotfiles with stow..."
     stow .
@@ -73,11 +73,11 @@ fi
 # Install Homebrew packages from Brewfile
 # -----------------------------------------------------------------------------
 echo "Installing packages from Brewfile..."
-if [ -f ~/.dotenv/Brewfile ]; then
+if [ -f ~/.dotfiles/Brewfile ]; then
   brew analytics off
-  brew bundle --file=~/.dotenv/Brewfile
+  brew bundle --file=~/.dotfiles/Brewfile
 else
-  echo "⚠️  Brewfile not found in .dotenv directory."
+  echo "⚠️  Brewfile not found in .dotfiles directory."
 fi
 
 # -----------------------------------------------------------------------------
