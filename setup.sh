@@ -156,6 +156,9 @@ chflags nohidden ~/Library
 # Restart system UI processes to apply changes
 killall Dock Finder SystemUIServer 2>/dev/null || true
 
+# Do not dim brightness when on battery
+pmset -b lessbright 0
+
 # -----------------------------------------------------------------------------
 # Set up shell environment
 # -----------------------------------------------------------------------------
